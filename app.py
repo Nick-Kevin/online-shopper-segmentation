@@ -44,7 +44,16 @@ st.sidebar.header("👤 Visitor and time context")
 
 with st.sidebar:
     visitor_type = st.selectbox("Visitor Type", ["Returning", "New", "Other"])
-    date = st.date_input("Date")
+    date = st.date_input("Date of the session")
+    st.write("---")
+    st.markdown("""
+        Connect with me on [LinkedIn](https://www.linkedin.com/in/nick-kevin-razafinirina-988b34248/),
+        [GitHub](https://github.com/Nick-Kevin)
+    """)
+    st.markdown("""
+        If you like this demo, please consider giving it a ⭐ on
+        [GitHub](https://github.com/Nick-Kevin/online-shopper-segmentation)
+    """)
 
 # ------- MAIN PANEL: USER BEHAVIORAL DATA -------
 st.markdown("## 📊 Live Session Behavior")
@@ -54,18 +63,51 @@ col11, col21, col31 = st.columns(3)
 
 with col11:
     st.markdown("### 🗺️ Administrative pages")
-    admin_page = st.number_input("Page visited", min_value=0, value=2, step=1)
-    admin_duration = st.number_input("Time spent (seconds)", min_value=0, value=385)
+    admin_page = st.number_input(
+        "Page visited",
+        min_value=0,
+        value=2,
+        step=1,
+        help="number of administrative type pages that the user visited"
+    )
+    admin_duration = st.number_input(
+        "Time spent (seconds)",
+        min_value=0,
+        value=385,
+        help="amount of time spent by the visitor in administrative pages category"
+    )
 
 with col21:
     st.markdown("### ℹ️ Informational pages")
-    info_page = st.number_input("Page number", min_value=0, value=0, step=1)
-    info_duration = st.number_input("Time spent (seconds)", min_value=0, value=0)
+    info_page = st.number_input(
+        "Page number",
+        min_value=0,
+        value=0,
+        step=1,
+        help="number of informational type pages that the user visited"
+    )
+    info_duration = st.number_input(
+        "Time spent (seconds)",
+        min_value=0,
+        value=0,
+        help="amount of time spent by the visitor in informational pages category"
+    )
 
 with col31:
     st.markdown("### 🏷️ Product related pages")
-    product_page = st.number_input("Page number", min_value=0, value=1, step=1)
-    product_duration = st.number_input("Time spent (seconds)", min_value=0, value=75)
+    product_page = st.number_input(
+        "Page number",
+        min_value=0,
+        value=1,
+        step=1,
+        help="number of product related type pages that the user visited"
+    )
+    product_duration = st.number_input(
+        "Time spent (seconds)",
+        min_value=0,
+        value=75,
+        help="amount of time spent by the visitor in product related pages category"
+    )
 
 st.write("---")
 
@@ -77,7 +119,12 @@ with col12:
 with col22:
     exit_rate = st.slider("Exit rate", min_value=0.0, max_value=0.2, value=0.04, format="%0.2f")
 with col32:
-    page_value = st.number_input("Page value ($)", min_value=0, value=15)
+    page_value = st.number_input(
+        "Page value ($)",
+        min_value=0,
+        value=15,
+        help="Average value for a web page that a user has visited before completing an e-commerce transaction."
+    )
 
 st.write("---")
 
