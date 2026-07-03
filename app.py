@@ -30,3 +30,39 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# ------- APP HEADER -------
+st.title("🛍️ Online Shopper Purchasing Intent Segmetation")
+st.markdown("""
+    This dashboard uses a real-time e-commerce session to estimate the characteristic of visitors.
+    Adjust the behavior metrics below to see the estimation update.
+""")
+st.write("---")
+
+# ------- SIDEBAR -------
+st.sidebar.header("👤 Visitor and time context")
+
+with st.sidebar:
+    visitor_type = st.selectbox("Visitor Type", ["Returning", "New", "Other"])
+    date = st.date_input("Date")
+
+# ------- MAIN PANEL: USER BEHAVIORAL DATA -------
+st.markdown("## 📊 Live Session Behavior")
+
+# Using a 3-column grid of inputs
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.markdown("### 🗺️ Administrative pages")
+    admin_page = st.number_input("Page visited", min_value=0, value=2, step=1)
+    admin_duration = st.number_input("Time spent (seconds)", min_value=0, value=385)
+
+with col2:
+    st.markdown("### ℹ️ Informational pages")
+    info_page = st.number_input("Page number", min_value=0, value=0, step=1)
+    info_duration = st.number_input("Time spent (seconds)", min_value=0, value=0)
+
+with col3:
+    st.markdown("### 🏷️ Product related pages")
+    product_page = st.number_input("Page number", min_value=0, value=1, step=1)
+    product_duration = st.number_input("Time spent (seconds)", min_value=0, value=75)
