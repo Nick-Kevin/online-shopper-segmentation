@@ -195,17 +195,21 @@ if st.button("Estimate session cluster", type="primary"):
             formatted_visitor_type = "Returning_Visitor"
         case "New":
             formatted_visitor_type = "New_Visitor"
-        case "Other", _:
+        case "Other":
             formatted_visitor_type = "Other"
 
     month = pd.to_datetime(date).month
 
     match month:
-        case 1,2:
+        case 1:
+            formatted_month = "Feb"
+        case 2:
             formatted_month = "Feb"
         case 3:
             formatted_month = "Mar"
-        case 4, 5:
+        case 4:
+            formatted_month = "May"
+        case 5:
             formatted_month = "May"
         case 6:
             formatted_month = "June"
@@ -219,7 +223,7 @@ if st.button("Estimate session cluster", type="primary"):
             formatted_month = "Oct"
         case 11:
             formatted_month = "Nov"
-        case 12, _:
+        case 12:
             formatted_month = "Dec"
 
     user_data = {
